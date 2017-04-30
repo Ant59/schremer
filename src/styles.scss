@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Material Icons
+@import "~material-design-icons/iconfont/material-icons.css";
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,600');
+
+// Project Variables
+@import "assets/variables";
+
+// Global Styles
+body {
+  margin: 0;
+  padding: 56px 0 0;
+  background-color: lighten($color-primary-1, 25%);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}

@@ -1,0 +1,22 @@
+@import "../../../assets/variables";
+
+#container {
+  display: flex;
+  width: 768px;
+  margin: 1rem auto;
+  & > div {
+    border: 1px solid $color-primary-1;
+    background-color: #FFF;
+    color: #333;
+    margin: 0 0.5rem;
+    padding: 1rem;
+  }
+}
+
+#profile {
+  flex-grow: 1;
+}
+
+#timeline {
+  flex-grow: 2;
+}

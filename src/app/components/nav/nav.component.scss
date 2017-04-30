@@ -1,0 +1,51 @@
+@import "../../../assets/variables";
+
+nav {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 8px;
+  * {
+    margin: 0 1rem;
+  }
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: $color-primary-2;
+    &:hover {
+      color: lighten($color-primary-2, 20%);
+    }
+    &.active {
+      color: #FFF;
+    }
+  }
+  span {
+    color: #FFF;
+  }
+  .nav-filler {
+    flex: 1 1 auto;
+  }
+  background-color: $color-primary-3;
+}
+
+#app-title {
+  font-size: 1.2rem;
+  color: #FFF;
+}
+
+#account-menu {
+  display: flex;
+  align-items: center;
+  img {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border-radius: 600px;
+    width: 36px;
+    height: 36px;
+    border: 2px solid white;
+  }
+}
