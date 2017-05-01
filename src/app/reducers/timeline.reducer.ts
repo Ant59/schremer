@@ -25,9 +25,9 @@ export function reducer(state: State = initialState, action: Action): State {
       // Map the firebase db key to the id of the post object
       const posts = action.payload.map(post => {return {...post, id: post.$key}});
       // Filter for only posts the state didn't already know about
-      /* I chose to do this to prevent the state from reloadingg every post
-        entity each time the firebase database is updated, and also prevents
-        the possibility of deleted posts from disappearing before one's eyes */
+      /* I've done this to prevent the state from reloadingg every post entity
+        each time the firebase database is updated, and also prevents the
+        possibility of deleted posts from disappearing before one's eyes */
       const newPosts = posts.filter(post => !state.entities[post.id]);
       // Get ids for the new posts
       const newPostIds = newPosts.map(post => post.id);

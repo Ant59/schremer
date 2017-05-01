@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
@@ -13,7 +13,7 @@ import { Post } from '../../models/post.model';
   styleUrls: ['./timeline.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TimelineComponent implements OnInit {
+export class TimelineComponent {
   posts$: Observable<{ [id: string]: Post; }>;
   postIds$: Observable<string[]>;
   loading$: Observable<boolean>;
@@ -27,6 +27,8 @@ export class TimelineComponent implements OnInit {
     this.loading$ = store.select(fromRoot.isTimelineLoading);
   }
 
-  ngOnInit() {}
+  schreme(message: string) {
+    this.store.dispatch(new timeline.AddPostAction(message));
+  }
 
 }

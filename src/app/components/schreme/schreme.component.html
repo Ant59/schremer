@@ -1,0 +1,12 @@
+<form [formGroup]="schremeForm" (ngSubmit)="schreme.emit(this.schremeForm.controls.scheme.value)">
+  <div id="post-input">
+    <input
+      type="text"
+      formControlName="scheme"
+      id="scheme"
+      max-length="200"
+      required
+      placeholder="Share your brilliant plans...">
+    <button type="submit">Schreme!</button>
+  </div>
+</form>

@@ -24,3 +24,11 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
+
+img.avatar {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border-radius: 600px;
+  border: 2px solid $color-secondary-1-0;
+}

@@ -6,6 +6,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/do';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
@@ -22,11 +23,17 @@ export class TimelineEffects {
   ) { }
 
   @Effect()
-  loadCategories$ = this.actions$
+  loadPosts$ = this.actions$
     .ofType(timeline.LOAD)
     .switchMap(() =>
       this.service.getPosts()
         .map((posts: Post[]) => new timeline.LoadSuccessAction(posts))
         .catch(error => of(new timeline.LoadFailAction(error)))
     );
+
+  @Effect({dispatch: false})
+  addPost$ = this.actions$
+    .ofType(timeline.ADD_POST)
+    .map(action => action.payload)
+    .do(payload => this.service.addPost(payload));
 }

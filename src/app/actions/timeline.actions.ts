@@ -25,7 +25,7 @@ export class AddPostAction implements Action {
   // Readonly is a new typescript modifier for properties that prevents mutation
   readonly type = ADD_POST;
 
-  constructor(public payload: Post) { }
+  constructor(public payload: string) { }
 }
 export class AddPostSuccessAction implements Action {
   readonly type = ADD_POST_SUCCESS;
@@ -35,31 +35,31 @@ export class AddPostSuccessAction implements Action {
 export class AddPostFailAction implements Action {
   readonly type = ADD_POST_FAIL;
 
-  constructor(public payload: Post) { }
+  constructor(public payload: any) { }
 }
 
 // Remove post from timeline
 export class RemovePostAction implements Action {
   readonly type = REMOVE_POST;
 
-  constructor(public payload: Post) { }
+  constructor(public payload: string) { }
 }
 export class RemovePostSuccessAction implements Action {
   readonly type = REMOVE_POST_SUCCESS;
 
-  constructor(public payload: Post) { }
+  constructor(public payload: number) { }
 }
 export class RemovePostFailAction implements Action {
   readonly type = REMOVE_POST_FAIL;
 
-  constructor(public payload: Post) { }
+  constructor(public payload: any) { }
 }
 
 // Edit post from timeline
 export class EditPostAction implements Action {
   readonly type = EDIT_POST;
 
-  constructor(public payload: Post) { }
+  constructor(public payload: string) { }
 }
 export class EditPostSuccessAction implements Action {
   readonly type = EDIT_POST_SUCCESS;
@@ -69,24 +69,24 @@ export class EditPostSuccessAction implements Action {
 export class EditPostFailAction implements Action {
   readonly type = EDIT_POST_FAIL;
 
-  constructor(public payload: Post) { }
+  constructor(public payload: any) { }
 }
 
 // Rate post from timeline
 export class RatePostAction implements Action {
   readonly type = RATE_POST;
 
-  constructor(public payload: Post) { }
+  constructor(public payload: any) { } // TODO: Rating model
 }
 export class RatePostSuccessAction implements Action {
   readonly type = RATE_POST_SUCCESS;
 
-  constructor(public payload: Post) { }
+  constructor(public payload: number) { }
 }
 export class RatePostFailAction implements Action {
   readonly type = RATE_POST_FAIL;
 
-  constructor(public payload: Post) { }
+  constructor(public payload: any) { }
 }
 
 // Load timeline

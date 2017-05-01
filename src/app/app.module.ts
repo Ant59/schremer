@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -25,6 +25,7 @@ import { TimelineComponent } from './containers/timeline/timeline.component';
 import { PostComponent } from './components/post/post.component';
 import { MessagesComponent } from './containers/messages/messages.component';
 import { ProfileComponent } from './containers/profile/profile.component';
+import { SchremeComponent } from './components/schreme/schreme.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCOl7Gw7w3sDydz0vY7qOMXwObea1O1hag",
@@ -43,11 +44,12 @@ export const firebaseConfig = {
     PostComponent,
     MessagesComponent,
     ProfileComponent,
+    SchremeComponent,
   ],
   imports: [
     // Angular
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     BrowserAnimationsModule,
     // Store

@@ -1,13 +1,13 @@
 <div id="container">
-  <div id="profile">profile</div>
+  <div id="profile">
+    <div>
+      <img class="avatar" src="https://lorempixel.com/128/128/">
+      <h2>Username</h2>
+    </div>
+  </div>
   <div id="timeline">
     <div>
-      <form>
-        <div id="post-input">
-          <input type="text" max-length="200">
-          <button type="submit">Schreme!</button>
-        </div>
-      </form>
+      <app-schreme (schreme)="schreme($event)"></app-schreme>
     </div>
     <div class="loading" *ngIf="loading$ | async">
       <p>Loading timeline...</p>
