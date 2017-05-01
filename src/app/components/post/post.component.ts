@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 
 import { Post } from '../../models/post.model';
+import { SchemeStringsService } from '../../services/scheme-strings.service';
 
 @Component({
   selector: 'app-post',
@@ -10,10 +11,12 @@ import { Post } from '../../models/post.model';
 })
 export class PostComponent implements OnInit {
   @Input() post: Post;
+  actionLine: string;
 
-  constructor() { }
+  constructor(private strings: SchemeStringsService) { }
 
   ngOnInit() {
+    this.actionLine = this.strings.getSchemeString();
   }
 
 }

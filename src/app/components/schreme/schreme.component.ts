@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-schreme',
@@ -8,12 +8,9 @@ import { FormBuilder, Validators } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SchremeComponent {
+  @Input() schremeForm: FormGroup;
   @Output() schreme: EventEmitter<string> = new EventEmitter<string>();
 
-  schremeForm = this.fb.group({
-    scheme: ['', Validators.required],
-  })
-
-  constructor(private fb: FormBuilder) { }
+  constructor() { }
 
 }

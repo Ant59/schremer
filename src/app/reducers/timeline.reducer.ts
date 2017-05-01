@@ -30,7 +30,7 @@ export function reducer(state: State = initialState, action: Action): State {
         possibility of deleted posts from disappearing before one's eyes */
       const newPosts = posts.filter(post => !state.entities[post.id]);
       // Get ids for the new posts
-      const newPostIds = newPosts.map(post => post.id);
+      const newPostIds = newPosts.map(post => post.id).reverse();
       // Collect up the new posts into a map
       const newPostEntities = newPosts.reduce((entities: { [id: string]: Post }, post: Post) => {
         return {...entities, [post.id]: post};
@@ -38,7 +38,8 @@ export function reducer(state: State = initialState, action: Action): State {
 
       // Add the new posts to the state
       return {
-        ids: [ ...state.ids, ...newPostIds ],
+        ids: [ ...newPostIds, ...state.ids ],
+        // TS2.1 allows for object spread - awesome
         entities: { ...state.entities, ...newPostEntities },
         loading: false,
       };

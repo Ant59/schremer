@@ -4,6 +4,7 @@ import { RouterModule, Routes }  from '@angular/router';
 import { TimelineComponent } from './containers/timeline/timeline.component';
 import { ProfileComponent } from './containers/profile/profile.component';
 import { MessagesComponent } from './containers/messages/messages.component';
+import { LoginComponent } from './containers/login/login.component';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { MessagesComponent } from './containers/messages/messages.component';
       { path: '', component: TimelineComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'messages', component: MessagesComponent },
+      { path: 'login', component: LoginComponent },
       //{ path: '**', component: PageNotFoundComponent }
     ])
   ],

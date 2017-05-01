@@ -1,0 +1,31 @@
+@import "../../../assets/variables";
+
+#login {
+  width: 280px;
+  margin: 1rem auto;
+  border: 1px solid $color-primary-1;
+  background-color: #FFF;
+  color: #333;
+  padding: 1rem;
+  form {
+    display: flex;
+    flex-direction: column;
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    input {
+      margin-bottom: 1rem;
+      border: 1px solid #999;
+      padding: 0.6rem;
+    }
+    button {
+      border: 1px solid #999;
+      padding: 0.5rem 0.75rem;
+      background-color: $color-secondary-1-1;
+      color: #333;
+      font-weight: 300;
+      font-size: 1rem;
+    }
+  }
+}

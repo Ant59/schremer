@@ -15,8 +15,11 @@ import { AngularFireModule } from 'angularfire2';
 import { AppRoutingModule } from './app-routing.module';
 import { reducer } from "./reducers/app.reducer";
 
+import { AuthService } from './services/auth.service';
 import { TimelineService } from './services/timeline.service';
+import { SchemeStringsService } from './services/scheme-strings.service';
 
+import { AuthEffects } from './effects/auth.effects';
 import { TimelineEffects } from './effects/timeline.effects';
 
 import { AppComponent } from './app.component';
@@ -26,6 +29,7 @@ import { PostComponent } from './components/post/post.component';
 import { MessagesComponent } from './containers/messages/messages.component';
 import { ProfileComponent } from './containers/profile/profile.component';
 import { SchremeComponent } from './components/schreme/schreme.component';
+import { LoginComponent } from './containers/login/login.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCOl7Gw7w3sDydz0vY7qOMXwObea1O1hag",
@@ -45,6 +49,7 @@ export const firebaseConfig = {
     MessagesComponent,
     ProfileComponent,
     SchremeComponent,
+    LoginComponent,
   ],
   imports: [
     // Angular
@@ -56,6 +61,7 @@ export const firebaseConfig = {
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     // Effects
+    EffectsModule.run(AuthEffects),
     EffectsModule.run(TimelineEffects),
     // Routing
     AppRoutingModule,
@@ -64,7 +70,9 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
   ],
   providers: [
+    AuthService,
     TimelineService,
+    SchemeStringsService,
   ],
   bootstrap: [
     AppComponent,
