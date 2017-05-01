@@ -1,5 +1,12 @@
 {
   "rules": {
+    "posts": {
+      ".read": true,
+      ".write": "auth != null",
+      "body": {
+        ".validate": "newData.isString() && newData.val().length < 200"
+      }
+    },
     ".read": "auth != null",
     ".write": "auth != null"
   }

@@ -25,19 +25,11 @@ export class TimelineService {
     });
   }
 
-  addPost(message: string): void {
-    const post = {
+  addPost(message: string): any { // TODO: Type
+    return this.af.database.list('/posts').push({
       body: message,
       user: "username",//this.af.auth.
-    };
-    const ref = this.af.database.list('/posts').push(post);
-    ref.then(() => {
-        this.store.dispatch(new timeline.AddPostSuccessAction({...post, id: ref.key}));
-      },
-      (error: Error) => {
-        this.store.dispatch(new timeline.AddPostFailAction(error));
-      }
-    );
+    });
   }
 
 }

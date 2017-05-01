@@ -1,4 +1,17 @@
+@import "../../../assets/variables";
+
 h4 {
-  font-weight: 600;
   margin-top: 0;
+  #name {
+    font-weight: 600;
+    color: $color-secondary-1-0;
+  }
+  #action-line {
+    font-weight: 300;
+    font-style: italic;
+  }
+}
+
+q {
+  
 }

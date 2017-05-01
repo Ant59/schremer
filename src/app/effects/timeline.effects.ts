@@ -5,8 +5,6 @@ import { Actions, Effect } from '@ngrx/effects';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/operator/do';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
@@ -35,5 +33,14 @@ export class TimelineEffects {
   addPost$ = this.actions$
     .ofType(timeline.ADD_POST)
     .map(action => action.payload)
-    .do(payload => this.service.addPost(payload));
+    .switchMap(payload => {
+      const ref = this.service.addPost(payload);
+      return ref.then(
+        () => new timeline.AddPostSuccessAction({
+          id: ref.key,
+          body: payload,
+          user: "username"
+        }),
+        error => new timeline.AddPostFailAction(error))
+    });
 }

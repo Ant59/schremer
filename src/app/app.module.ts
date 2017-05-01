@@ -10,7 +10,7 @@ import { RouterStoreModule, routerReducer } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { compose } from '@ngrx/core/compose';
 
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
 import { AppRoutingModule } from './app-routing.module';
 import { reducer } from "./reducers/app.reducer";
@@ -40,6 +40,11 @@ export const firebaseConfig = {
   messagingSenderId: "815409101642"
 };
 
+const firebaseAuthConfig = {
+  provider: AuthProviders.Password,
+  method: AuthMethods.Password
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +72,7 @@ export const firebaseConfig = {
     AppRoutingModule,
     RouterStoreModule.connectRouter(),
     // Firebase
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
   ],
   providers: [
     AuthService,

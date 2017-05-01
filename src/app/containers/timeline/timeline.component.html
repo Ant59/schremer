@@ -10,7 +10,7 @@
       <app-schreme [schremeForm]="schremeForm" (schreme)="schreme($event)"></app-schreme>
     </div>
     <div class="loading" *ngIf="loading$ | async">
-      Loading timeline...
+      Loading timeline&hellip;
     </div>
     <div *ngFor="let id of postIds$ | async">
       <app-post [post]="(posts$ | async)[id]"></app-post>

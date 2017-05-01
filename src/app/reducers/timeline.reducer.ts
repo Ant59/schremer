@@ -8,13 +8,13 @@ import { Post } from "../models/post.model";
 export interface State {
   ids: string[],
   entities: { [id: string]: Post; },
-  loading: boolean,
+  loading: boolean
 }
 
 export const initialState: State = {
   ids: [],
   entities: {},
-  loading: false,
+  loading: false
 };
 
 export function reducer(state: State = initialState, action: Action): State {
