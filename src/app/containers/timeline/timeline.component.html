@@ -3,9 +3,17 @@
   <div id="timeline">
     <div>
       <form>
-        <input type="text">
+        <div id="post-input">
+          <input type="text" max-length="200">
+          <button type="submit">Schreme!</button>
+        </div>
       </form>
     </div>
-    <app-post *ngFor="let post of posts"></app-post>
+    <div class="loading" *ngIf="loading$ | async">
+      <p>Loading timeline...</p>
+    </div>
+    <div *ngFor="let id of postIds$ | async">
+      <app-post [post]="(posts$ | async)[id]"></app-post>
+    </div>
   </div>
 </div>
