@@ -25,10 +25,11 @@ export class TimelineService {
     });
   }
 
-  addPost(message: string): any { // TODO: Type
+  addPost(message: string, username: string): any { // TODO: Type
     return this.af.database.list('/posts').push({
       body: message,
-      user: "username",//this.af.auth.
+      user: username,
+      time: Date.now()
     });
   }
 

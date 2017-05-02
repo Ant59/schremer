@@ -1,5 +1,6 @@
 export interface Post {
   id: string,
   body: string,
-  user: string
+  user: string,
+  time: number
 }

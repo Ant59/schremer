@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
+import { Store } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/withLatestFrom';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
+import * as fromRoot from '../reducers/app.reducer';
 import * as timeline from '../actions/timeline.actions';
 import { Post } from '../models/post.model';
 import { TimelineService } from '../services/timeline.service';
@@ -17,7 +20,8 @@ export class TimelineEffects {
 
   constructor(
     private actions$: Actions,
-    private service: TimelineService
+    private service: TimelineService,
+    private store: Store<fromRoot.State>
   ) { }
 
   @Effect()
@@ -33,13 +37,15 @@ export class TimelineEffects {
   addPost$ = this.actions$
     .ofType(timeline.ADD_POST)
     .map(action => action.payload)
-    .switchMap(payload => {
-      const ref = this.service.addPost(payload);
+    .withLatestFrom(this.store.select(fromRoot.getAuthEmail))
+    .switchMap(([body, username]) => {
+      const ref = this.service.addPost(body, username);
       return ref.then(
         () => new timeline.AddPostSuccessAction({
           id: ref.key,
-          body: payload,
-          user: "username"
+          body: body,
+          user: username,
+          time: Date.now()
         }),
         error => new timeline.AddPostFailAction(error))
     });
