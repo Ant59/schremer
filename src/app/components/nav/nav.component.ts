@@ -7,6 +7,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavComponent implements OnInit {
+  open: boolean = false;
 
   constructor() { }
 

@@ -2,7 +2,7 @@
 
 #container {
   display: flex;
-  width: 768px;
+  max-width: 768px;
   margin: 1rem auto;
   & > #profile > div, & > #timeline {
     border: 1px solid $color-primary-1;
@@ -24,6 +24,9 @@
     h2 {
       text-align: center;
     }
+  }
+  @media screen and (max-width: $mobile-breakpoint) {
+    display: none;
   }
 }
 

@@ -1,4 +1,4 @@
-<nav>
+<nav [class.open]="open">
   <h1 id="app-title">Schremer</h1>
   <a routerLink="/" routerLinkActive="active">Timeline</a>
   <a routerLink="/profile" routerLinkActive="active">Profile</a>
@@ -8,4 +8,7 @@
     <span>Username</span>
     <img class="avatar" src="https://lorempixel.com/36/36/">
   </span>
+  <a id="open-menu" (click)="open = !open">
+    <i class="material-icons">menu</i>
+  </a>
 </nav>
