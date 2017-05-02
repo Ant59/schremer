@@ -17,7 +17,9 @@ import * as auth from '../../actions/auth.actions';
 })
 export class LoginComponent {
   loginForm = this.fb.group({
-    email: ['', Validators.required, Validators.email],
+    email: ['', Validators.compose([
+      Validators.email,
+      Validators.required])],
     password: ['', Validators.required],
   })
 

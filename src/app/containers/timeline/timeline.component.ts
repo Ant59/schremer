@@ -44,7 +44,10 @@ export class TimelineComponent {
   initSchremeForm() {
     this.schremeForm = this.fb.group({
       // Ensure that schemes do not exceed 200 characters. This is enforced in the DB rules too.
-      scheme: ['', Validators.required, Validators.maxLength(200), Validators.minLength(10)],
+      scheme: ['', Validators.compose([
+        Validators.required,
+        Validators.maxLength(200),
+        Validators.minLength(10)])],
     })
   }
 
