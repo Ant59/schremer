@@ -1,12 +1,12 @@
 <div id="container">
-  <div id="profile">
+  <div id="profile" *ngIf="isLoggedIn$ | async">
     <div>
       <img class="avatar" src="https://lorempixel.com/128/128/">
       <h2>{{userEmail$ | async}}</h2>
     </div>
   </div>
   <div id="timeline">
-    <div>
+    <div *ngIf="isLoggedIn$ | async">
       <app-schreme [schremeForm]="schremeForm" (schreme)="schreme($event)"></app-schreme>
     </div>
     <div class="loading" *ngIf="loading$ | async">

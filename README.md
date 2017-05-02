@@ -15,3 +15,5 @@ The app uses Angular 4 and ngrx to produce a modern web application with redux-s
 - Effects can interact outside of state on actions
 
 All data is treated as an observable stream. Performance benefits are gained from having Angular avoid dirty change detection checks and only updating components when streams push new state.
+
+UI is fully responsive for mobile, tablet and desktop. Uses vanilla SCSS with no framework for styling. Components use encapsulated styles for reusability.

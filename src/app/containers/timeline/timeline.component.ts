@@ -18,6 +18,7 @@ export class TimelineComponent {
   posts$: Observable<{ [id: string]: Post; }>;
   postIds$: Observable<string[]>;
   loading$: Observable<boolean>;
+  isLoggedIn$: Observable<boolean>;
   userEmail$: Observable<string>;
   schremeForm: FormGroup;
 
@@ -29,6 +30,7 @@ export class TimelineComponent {
     this.posts$ = store.select(fromRoot.getPosts);
     this.postIds$ = store.select(fromRoot.getPostIds);
     this.loading$ = store.select(fromRoot.isTimelineLoading);
+    this.isLoggedIn$ = store.select(fromRoot.isLoggedIn);
     this.userEmail$ = store.select(fromRoot.getAuthEmail);
 
     this.initSchremeForm();
