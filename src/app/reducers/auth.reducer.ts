@@ -30,5 +30,5 @@ export function reducer(state: State = initialState, action: Action): State {
 
 // Create selectors
 export const getAuth = (state: State) => state.auth;
-export const getEmail = (state: State) => state.auth.auth.email;
+export const getEmail = (state: State) => { if (state.auth) return state.auth.auth.email };
 export const isLoggedIn = (state: State) => !!state.auth;

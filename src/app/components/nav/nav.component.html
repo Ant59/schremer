@@ -4,10 +4,11 @@
   <a routerLink="/profile" routerLinkActive="active">Profile</a>
   <a routerLink="/messages" routerLinkActive="active">Messages</a>
   <span class="nav-filler"></span>
-  <span id="account-menu">
-    <span>Username</span>
+  <span id="account-menu" *ngIf="isLoggedIn; else login">
+    <span>{{userEmail}}</span>
     <img class="avatar" src="https://lorempixel.com/36/36/">
   </span>
+  <ng-template #login><a routerLink="/login" routerLinkActive="active">Login</a></ng-template>
   <a id="open-menu" (click)="open = !open">
     <i class="material-icons">menu</i>
   </a>

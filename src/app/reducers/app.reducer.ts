@@ -43,6 +43,8 @@ export function reducer(state: any, action: any) {
 // Selectors need awareness of the root state when used in components
 // Selectors for auth
 export const getAuthState = (state: State) => state.auth;
+export const getAuthEmail = createSelector(getAuthState, fromAuth.getEmail);
+export const isLoggedIn = createSelector(getAuthState, fromAuth.isLoggedIn);
 
 // Selectors for timeline
 export const getTimelineState = (state: State) => state.timeline;

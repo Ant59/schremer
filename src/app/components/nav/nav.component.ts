@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -6,12 +6,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./nav.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavComponent implements OnInit {
+export class NavComponent {
   open: boolean = false;
 
-  constructor() { }
+  @Input() isLoggedIn: boolean;
+  @Input() userEmail: string;
 
-  ngOnInit() {
-  }
+  constructor() { }
 
 }
