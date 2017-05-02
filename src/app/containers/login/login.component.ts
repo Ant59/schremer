@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
@@ -16,15 +17,21 @@ import * as auth from '../../actions/auth.actions';
 })
 export class LoginComponent {
   loginForm = this.fb.group({
-    email: ['', Validators.required],
+    email: ['', Validators.required, Validators.email],
     password: ['', Validators.required],
   })
 
   constructor(
     private store: Store<fromRoot.State>,
     private fb: FormBuilder,
-    private service: AuthService
-  ) { }
+    private service: AuthService,
+    private router: Router
+  ) {
+    // Once logged in, navigate away from the login page
+    this.store.select(fromRoot.isLoggedIn).subscribe(loggedIn => {
+      if (loggedIn) this.router.navigate(['/timeline']);
+    });
+  }
 
   login() {
     if (this.loginForm.valid) {

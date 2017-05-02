@@ -6,8 +6,9 @@
     </div>
   </div>
   <div id="timeline">
-    <div *ngIf="isLoggedIn$ | async">
-      <app-schreme [schremeForm]="schremeForm" (schreme)="schreme($event)"></app-schreme>
+    <div>
+      <app-schreme [schremeForm]="schremeForm" (schreme)="schreme($event)" *ngIf="isLoggedIn$ | async; else login"></app-schreme>
+      <ng-template #login><a routerLink="/login">Login to broadcast your machinations</a></ng-template>
     </div>
     <div class="loading" *ngIf="loading$ | async">
       Loading timeline&hellip;

@@ -15,6 +15,8 @@ import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { AppRoutingModule } from './app-routing.module';
 import { reducer } from "./reducers/app.reducer";
 
+import { AuthGuard } from './guards/auth.guard';
+
 import { AuthService } from './services/auth.service';
 import { TimelineService } from './services/timeline.service';
 import { SchemeStringsService } from './services/scheme-strings.service';
@@ -75,6 +77,7 @@ const firebaseAuthConfig = {
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
   ],
   providers: [
+    AuthGuard,
     AuthService,
     TimelineService,
     SchemeStringsService,
